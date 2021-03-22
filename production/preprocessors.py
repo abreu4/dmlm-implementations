@@ -108,7 +108,6 @@ class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
             
             variable_frequencies = pd.Series(X[var].value_counts() / np.float(len(X)))
             
-            # TODO: scrutinize this line for meaning
             self.encoder_dict_[var] = list(variable_frequencies[variable_frequencies >= self.percentage].index)
 
         return self
@@ -144,7 +143,6 @@ class CategoricalEncoder(BaseEstimator, TransformerMixin):
         X = X.copy()
         
         # Add dummies
-        # TODO: Find out why running get_dummies only once in "fit" will not persist it
         X = pd.concat([X, pd.get_dummies(X[self.variables], drop_first=True)], axis=1)
         
         # Drop real labels

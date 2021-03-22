@@ -15,9 +15,8 @@ titanic_pipe = Pipeline(
    		('extract_first_letter', pp.ExtractFirstLetter(variables=CABIN_VAR)),
    		('rare_label_encoding', pp.RareLabelCategoricalEncoder(tol=0.05, variables=CATEGORICAL_VARS)),
    		('categorical_encoding', pp.CategoricalEncoder(variables=CATEGORICAL_VARS)),
-   		('scaler', StandardScaler()), # Why not MinMaxScaler?
-        ('model', LogisticRegression(C=0.0005, random_state=0)) # Why not Lasso?
-   
+   		('scaler', StandardScaler()),
+        ('model', LogisticRegression(C=0.0005, random_state=0))
    	]
   
    )
